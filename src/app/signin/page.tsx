@@ -2,6 +2,8 @@
 import React from 'react';
 import signIn from '@/firebase/auth/signin';
 import { useRouter } from 'next/navigation';
+import { Button } from '@/components/ui/button';
+import googleAuth from '@/firebase/auth/googleauth';
 
 function Page() {
   const [email, setEmail] = React.useState('');
@@ -20,10 +22,22 @@ function Page() {
     console.log(result);
     return router.push('/home');
   };
+
+  const handleGoogleSignIn = async () => {
+    const { result, error } = await googleAuth();
+
+    if (error) {
+      return console.log(error);
+    }
+
+    console.log(result);
+    return router.push('/home');
+  };
+
   return (
     <div className="wrapper">
       <div className="form-wrapper">
-        <h1 className="mt-60 mb-30">Sign up</h1>
+        <h1 className="mt-60 mb-30">Sign in</h1>
         <form onSubmit={handleForm} className="form">
           <label htmlFor="email">
             <p>Email</p>
@@ -47,8 +61,9 @@ function Page() {
               placeholder="password"
             />
           </label>
-          <button type="submit">Sign up</button>
+          <button type="submit">Sign in</button>
         </form>
+        <Button onClick={handleGoogleSignIn}>Google Sign In</Button>
       </div>
     </div>
   );
