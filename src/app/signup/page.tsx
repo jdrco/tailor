@@ -2,6 +2,8 @@
 import React from 'react';
 import signUp from '@/firebase/auth/signup';
 import { useRouter } from 'next/navigation';
+import { Button } from '@/components/ui/button';
+import googleAuth from '@/firebase/auth/googleauth';
 
 function Page() {
   const [email, setEmail] = React.useState('');
@@ -20,6 +22,18 @@ function Page() {
     console.log(result);
     return router.push('/home');
   };
+
+  const handleGoogleSignUp = async () => {
+    const { result, error } = await googleAuth();
+
+    if (error) {
+      return console.log(error);
+    }
+
+    console.log(result);
+    return router.push('/home');
+  };
+
   return (
     <div className="wrapper">
       <div className="form-wrapper">
@@ -49,6 +63,7 @@ function Page() {
           </label>
           <button type="submit">Sign up</button>
         </form>
+        <Button onClick={handleGoogleSignUp}>Google Sign Up</Button>
       </div>
     </div>
   );
