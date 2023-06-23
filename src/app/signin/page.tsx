@@ -18,7 +18,7 @@ function Page() {
     }
 
     console.log(result);
-    return router.push('/admin');
+    return router.push('/home');
   };
   return (
     <div className="wrapper">
