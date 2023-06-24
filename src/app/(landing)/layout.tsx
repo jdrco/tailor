@@ -4,6 +4,7 @@ import { landingConfig } from '@/config/landing';
 import { cn } from '@/lib/utils';
 import { buttonVariants } from '@/components/ui/button';
 import { LandingNav } from '@/components/landing-nav';
+import { SiteFooter } from '@/components/footer';
 
 interface MarketingLayoutProps {
   children: React.ReactNode;
@@ -31,6 +32,7 @@ export default async function MarketingLayout({
         </div>
       </header>
       <main className="flex-1">{children}</main>
+      <SiteFooter />
     </div>
   );
 }

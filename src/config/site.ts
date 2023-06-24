@@ -6,7 +6,8 @@ export const siteConfig: SiteConfig = {
   url: '',
   ogImage: '',
   links: {
-    twitter: '',
-    github: '',
+    portfolio: 'https://www.jareddrueco.com/',
+    shadcn: 'https://ui.shadcn.com/',
+    taxonomy: 'https://tx.shadcn.com/',
   },
 };

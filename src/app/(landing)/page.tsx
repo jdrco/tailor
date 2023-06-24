@@ -10,7 +10,7 @@ export default function Home() {
       <section className="space-y-6 pb-8 pt-6 md:pb-12 md:pt-10 lg:py-32">
         <div className="container flex max-w-[64rem] flex-col items-center gap-4 text-center">
           <Link
-            href={siteConfig.links.twitter}
+            href="/"
             className="rounded-2xl bg-muted px-4 py-1.5 text-sm font-medium"
             target="_blank"
           >
@@ -147,7 +147,7 @@ export default function Home() {
             Tailored is a complete <span className="font-bold">free</span>{' '}
             software application. Enjoy! <br />{' '}
             <Link
-              href="/pricing"
+              href="/#pricing"
               target="_blank"
               rel="noreferrer"
               className="underline underline-offset-4"
