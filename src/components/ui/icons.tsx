@@ -19,44 +19,45 @@ import {
   Pizza,
   Plus,
   Settings,
+  BookOpen,
   SunMedium,
   Trash,
   Twitter,
   User,
   X,
   type Icon as LucideIcon,
-} from "lucide-react"
+} from 'lucide-react';
 
-export type Icon = LucideIcon
+export type Icon = LucideIcon;
 
 export const Icons = {
-  logo: (props: LucideProps) => (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" {...props}>
-      <rect width="256" height="256" fill="none" />
-      <line
-        x1="208"
-        y1="128"
-        x2="128"
-        y2="208"
-        fill="none"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="16"
-      />
-      <line
-        x1="192"
-        y1="40"
-        x2="40"
-        y2="192"
-        fill="none"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="16"
-      />
-    </svg>
-  ),
+  // logo: (props: LucideProps) => (
+  //   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" {...props}>
+  //     <rect width="256" height="256" fill="none" />
+  //     <line
+  //       x1="208"
+  //       y1="128"
+  //       x2="128"
+  //       y2="208"
+  //       fill="none"
+  //       stroke="currentColor"
+  //       strokeLinecap="round"
+  //       strokeLinejoin="round"
+  //       strokeWidth="16"
+  //     />
+  //     <line
+  //       x1="192"
+  //       y1="40"
+  //       x2="40"
+  //       y2="192"
+  //       fill="none"
+  //       stroke="currentColor"
+  //       strokeLinecap="round"
+  //       strokeLinejoin="round"
+  //       strokeWidth="16"
+  //     />
+  //   </svg>
+  // ),
   close: X,
   spinner: Loader2,
   chevronLeft: ChevronLeft,
@@ -67,6 +68,7 @@ export const Icons = {
   media: Image,
   settings: Settings,
   billing: CreditCard,
+  logo: BookOpen,
   ellipsis: MoreVertical,
   add: Plus,
   warning: AlertTriangle,
@@ -171,4 +173,4 @@ export const Icons = {
       />
     </svg>
   ),
-}
+};
