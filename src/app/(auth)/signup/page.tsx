@@ -49,7 +49,7 @@ function Page() {
   };
 
   return (
-    <Card className="w-96">
+    <Card className="w-96 border-0 shadow-none">
       <CardHeader className="space-y-1">
         <CardTitle className="text-2xl">Sign up</CardTitle>
         <CardDescription>
@@ -95,7 +95,9 @@ function Page() {
       <CardFooter className="flex justify-between">
         <CardDescription>Already have an account?</CardDescription>
         <Link href="/signin">
-          <CardDescription className="underline">Sign in</CardDescription>
+          <CardDescription className="underline underline-offset-4">
+            Sign in
+          </CardDescription>
         </Link>
       </CardFooter>
     </Card>

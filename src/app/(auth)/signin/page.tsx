@@ -46,7 +46,7 @@ function Page() {
     return router.push('/home');
   };
   return (
-    <Card className="w-96">
+    <Card className="w-96 border-0 shadow-none">
       <CardHeader className="space-y-1">
         <CardTitle className="text-2xl">Sign in</CardTitle>
         <CardDescription>
@@ -92,7 +92,9 @@ function Page() {
       <CardFooter className="flex justify-between">
         <CardDescription>Don&apos;t have an account?</CardDescription>
         <Link href="/signup">
-          <CardDescription className="underline">Sign up</CardDescription>
+          <CardDescription className="underline underline-offset-4">
+            Sign up
+          </CardDescription>
         </Link>
       </CardFooter>
     </Card>

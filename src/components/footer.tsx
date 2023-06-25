@@ -28,18 +28,8 @@ export function SiteFooter({ className }: React.HTMLAttributes<HTMLElement>) {
               rel="noreferrer"
               className="font-medium underline underline-offset-4"
             >
-              shadcn {''}
+              shadcn.
             </a>
-            using{' '}
-            <a
-              href={siteConfig.links.taxonomy}
-              target="_blank"
-              rel="noreferrer"
-              className="font-medium underline underline-offset-4"
-            >
-              Taxonomy{' '}
-            </a>
-            as a design reference.
           </p>
         </div>
         <ModeToggle />

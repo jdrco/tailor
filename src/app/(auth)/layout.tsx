@@ -28,7 +28,14 @@ export default function AuthLayout({ children }: AuthLayoutProps) {
           <div>- Some testimonial</div>
         </div>
       </div>
-      <div className="w-full lg:w-1/2 flex justify-center items-center">
+      <div className="w-full lg:w-1/2 flex flex-col justify-center items-center">
+        <Link
+          href="/"
+          className="flex flex-col text-3xl items-center lg:hidden"
+        >
+          <Icons.logo size={36} />
+          <span className="font-bold">{siteConfig.name}</span>
+        </Link>
         {children}
       </div>
     </div>
