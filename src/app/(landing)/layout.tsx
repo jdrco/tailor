@@ -22,7 +22,7 @@ export default async function LandingLayout({ children }: LandingLayoutProps) {
           </nav>
         </div>
       </header>
-      <main className="flex container w-full flex-1 flex-col overflow-hidden">
+      <main className="flex lg:container w-full flex-1 flex-col overflow-hidden">
         {children}
       </main>
       <SiteFooter className="border-t" />
