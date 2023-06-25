@@ -2,7 +2,6 @@ import Link from 'next/link';
 
 import { cn } from '@/lib/utils';
 import { buttonVariants } from '@/registry/new-york/ui/button';
-import { siteConfig } from '@/config/site';
 
 export default function Home() {
   return (

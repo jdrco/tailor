@@ -1,24 +1,21 @@
-import Link from 'next/link';
-
-import { landingConfig } from '@/config/landing';
-import { cn } from '@/lib/utils';
-import { buttonVariants } from '@/components/ui/button';
+import { homeConfig } from '@/config/home';
 import { MainNav } from '@/components/main-nav';
 import { SiteFooter } from '@/components/footer';
-import { SignInBtn } from '@/components/signin-btn';
+import React from 'react';
+import { SignOutBtn } from '@/components/signout-btn';
 
-interface LandingLayoutProps {
-  children: React.ReactNode;
+interface HomeLayoutProps {
+  children?: React.ReactNode;
 }
 
-export default async function LandingLayout({ children }: LandingLayoutProps) {
+export default async function HomeLayout({ children }: HomeLayoutProps) {
   return (
     <div className="flex min-h-screen flex-col space-y-6">
       <header className="sticky top-0 z-40 border-b bg-background">
         <div className="container flex h-16 items-center justify-between py-4">
-          <MainNav items={landingConfig.mainNav} />
+          <MainNav items={homeConfig.mainNav} />
           <nav>
-            <SignInBtn />
+            <SignOutBtn />
           </nav>
         </div>
       </header>

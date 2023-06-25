@@ -8,7 +8,7 @@ export type NavItem = {
   disabled?: boolean;
 };
 
-export type LandingNavItem = NavItem;
+export type MainNavItem = NavItem;
 
 export type SiteConfig = {
   name: string;
@@ -23,5 +23,9 @@ export type SiteConfig = {
 };
 
 export type LandingConfig = {
-  mainNav: LandingNavItem[];
+  mainNav: MainNavItem[];
+};
+
+export type HomeConfig = {
+  mainNav: MainNavItem[];
 };

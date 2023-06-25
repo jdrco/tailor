@@ -4,18 +4,18 @@ import * as React from 'react';
 import Link from 'next/link';
 import { useSelectedLayoutSegment } from 'next/navigation';
 
-import { LandingNavItem } from '@/types';
+import { MainNavItem } from '@/types';
 import { siteConfig } from '@/config/site';
 import { cn } from '@/lib/utils';
 import { Icons } from '@/components/ui/icons';
 import { MobileNav } from '@/components/mobile-nav';
 
-interface LandingNavProps {
-  items?: LandingNavItem[];
+interface MainNavProps {
+  items?: MainNavItem[];
   children?: React.ReactNode;
 }
 
-export function LandingNav({ items, children }: LandingNavProps) {
+export function MainNav({ items, children }: MainNavProps) {
   const segment = useSelectedLayoutSegment();
   const [showMobileMenu, setShowMobileMenu] = React.useState<boolean>(false);
 
