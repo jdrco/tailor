@@ -11,7 +11,7 @@ interface AuthLayoutProps {
 export default function AuthLayout({ children }: AuthLayoutProps) {
   return (
     <div className="flex h-screen">
-      <div className="w-1/2 flex flex-col justify-between bg-primary p-12 text-primary-foreground">
+      <div className="w-1/2 hidden lg:flex flex-col justify-between bg-primary p-12 text-primary-foreground">
         <div className="text-3xl flex items-center">
           <Link href="/" className="hidden items-center space-x-4 md:flex">
             <Icons.logo size={36} />
@@ -28,7 +28,9 @@ export default function AuthLayout({ children }: AuthLayoutProps) {
           <div>- Some testimonial</div>
         </div>
       </div>
-      <div className="w-1/2 flex justify-center items-center">{children}</div>
+      <div className="w-full lg:w-1/2 flex justify-center items-center">
+        {children}
+      </div>
     </div>
   );
 }
