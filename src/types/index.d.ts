@@ -29,3 +29,11 @@ export type LandingConfig = {
 export type HomeConfig = {
   mainNav: MainNavItem[];
 };
+
+type Profile = {
+  userId: number;
+  id: string;
+  title: string;
+  content: string;
+  modifiedAt: string;
+};

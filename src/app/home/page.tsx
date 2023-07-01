@@ -15,6 +15,34 @@ function Page() {
     if (user == null) router.push('/');
   }, [router, user]);
 
+  const profiles = [
+    {
+      id: 1,
+      title: 'First Item',
+      createdAt: '2023-06-28T09:15:00Z',
+    },
+    {
+      id: 2,
+      title: 'Second Item',
+      createdAt: '2023-06-28T14:30:00Z',
+    },
+    {
+      id: 3,
+      title: 'Third Item',
+      createdAt: '2023-06-29T08:45:00Z',
+    },
+    {
+      id: 4,
+      title: 'Fourth Item',
+      createdAt: '2023-06-29T15:20:00Z',
+    },
+    {
+      id: 5,
+      title: 'Fifth Item',
+      createdAt: '2023-06-30T11:10:00Z',
+    },
+  ];
+
   return (
     <HomeShell>
       <HomeHeader
@@ -23,24 +51,10 @@ function Page() {
       >
         <ProfileCreateButton />
       </HomeHeader>
-      <div className="grid grid-cols-2 gap-8">
-        <ProfileItem
-          post={{ id: 'ID-1', title: 'Untitled', createdAt: '01-01-0001' }}
-        />
-        <ProfileItem
-          post={{ id: 'ID-1', title: 'Untitled', createdAt: '01-01-0001' }}
-        />
-        <ProfileItem
-          post={{ id: 'ID-1', title: 'Untitled', createdAt: '01-01-0001' }}
-        />
-        {/* <EmptyPlaceholder>
-            <EmptyPlaceholder.Icon name="post" />
-            <EmptyPlaceholder.Title>No posts created</EmptyPlaceholder.Title>
-            <EmptyPlaceholder.Description>
-              You don&apos;t have any posts yet. Start creating content.
-            </EmptyPlaceholder.Description>
-            <PostCreateButton variant="outline" />
-          </EmptyPlaceholder> */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 ">
+        {profiles.map((profile) => (
+          <ProfileItem key={profile.id} profile={profile} />
+        ))}
       </div>
     </HomeShell>
   );

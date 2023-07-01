@@ -6,7 +6,7 @@ interface HomeShellProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export function HomeShell({ children, className, ...props }: HomeShellProps) {
   return (
-    <div className={cn('grid items-start gap-8', className)} {...props}>
+    <div className={cn('grid items-start gap-4', className)} {...props}>
       {children}
     </div>
   );
