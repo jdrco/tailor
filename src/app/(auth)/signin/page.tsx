@@ -14,37 +14,59 @@ import {
 import { Input } from '@/registry/new-york/ui/input';
 import { Label } from '@/registry/new-york/ui/label';
 
-import signIn from '@/firebase/auth/signin';
+import { firebaseAuth, googleProvider } from '@/firebase/config';
+import {
+  getRedirectResult,
+  signInWithEmailAndPassword,
+  signInWithRedirect,
+} from 'firebase/auth';
+
 import { useRouter } from 'next/navigation';
-import googleAuth from '@/firebase/auth/googleauth';
 
 function Page() {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
   const router = useRouter();
+
+  React.useEffect(() => {
+    getRedirectResult(firebaseAuth).then(async (userCred) => {
+      if (!userCred) {
+        return;
+      }
+
+      fetch('/api/signin', {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${await userCred.user.getIdToken()}`,
+        },
+      }).then((response) => {
+        if (response.status === 200) {
+          router.push('/home');
+        }
+      });
+    });
+  }, []);
+
   const handleEmailSignIn = async (event: { preventDefault: () => void }) => {
     event.preventDefault();
 
-    const { result, error } = await signIn(email, password);
-
-    if (error) {
-      return console.log(error);
+    try {
+      await signInWithEmailAndPassword(firebaseAuth, email, password);
+    } catch (e) {
+      console.log(e);
     }
 
-    console.log(result);
     return router.push('/home');
   };
 
   const handleGoogleAuth = async () => {
-    const { result, error } = await googleAuth();
-
-    if (error) {
-      return console.log(error);
+    try {
+      signInWithRedirect(firebaseAuth, googleProvider);
+    } catch (e) {
+      console.log(e);
     }
-
-    console.log(result);
-    return router.push('/home');
   };
+
   return (
     <Card className="w-96 border-0 shadow-none">
       <CardHeader className="space-y-1">
@@ -71,7 +93,7 @@ function Page() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <Button onClick={handleEmailSignIn} className="w-full">
+        <Button onClick={(e) => handleEmailSignIn(e)} className="w-full">
           Sign In
         </Button>
         <div className="relative">
@@ -84,7 +106,7 @@ function Page() {
             </span>
           </div>
         </div>
-        <Button variant="outline" onClick={handleGoogleAuth}>
+        <Button variant="outline" onClick={() => handleGoogleAuth()}>
           <Icons.google className="mr-2 h-4 w-4" />
           Google
         </Button>

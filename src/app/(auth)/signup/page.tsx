@@ -1,6 +1,4 @@
 'use client';
-import signUp from '@/firebase/auth/signup';
-
 import React from 'react';
 import Link from 'next/link';
 import { Icons } from '@/components/ui/icons';
@@ -16,36 +14,57 @@ import {
 import { Input } from '@/registry/new-york/ui/input';
 import { Label } from '@/registry/new-york/ui/label';
 
+import { firebaseAuth, googleProvider } from '@/firebase/config';
+import {
+  getRedirectResult,
+  createUserWithEmailAndPassword,
+  signInWithRedirect,
+} from 'firebase/auth';
+
 import { useRouter } from 'next/navigation';
-import googleAuth from '@/firebase/auth/googleauth';
 
 function Page() {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
   const router = useRouter();
 
+  React.useEffect(() => {
+    getRedirectResult(firebaseAuth).then(async (userCred) => {
+      if (!userCred) {
+        return;
+      }
+
+      fetch('/api/signin', {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${await userCred.user.getIdToken()}`,
+        },
+      }).then((response) => {
+        if (response.status === 200) {
+          router.push('/home');
+        }
+      });
+    });
+  }, []);
+
   const handleEmailSignUp = async (event: { preventDefault: () => void }) => {
     event.preventDefault();
 
-    const { result, error } = await signUp(email, password);
-
-    if (error) {
-      return console.log(error);
+    try {
+      await createUserWithEmailAndPassword(firebaseAuth, email, password);
+    } catch (e) {
+      console.log(e);
     }
 
-    console.log(result);
     return router.push('/home');
   };
 
   const handleGoogleAuth = async () => {
-    const { result, error } = await googleAuth();
-
-    if (error) {
-      return console.log(error);
+    try {
+      signInWithRedirect(firebaseAuth, googleProvider);
+    } catch (e) {
+      console.log(e);
     }
-
-    console.log(result);
-    return router.push('/home');
   };
 
   return (
@@ -74,7 +93,7 @@ function Page() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <Button onClick={handleEmailSignUp} className="w-full">
+        <Button onClick={(e) => handleEmailSignUp(e)} className="w-full">
           Sign In
         </Button>
         <div className="relative">

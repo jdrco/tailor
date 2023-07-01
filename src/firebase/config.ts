@@ -1,5 +1,6 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp, getApps } from 'firebase/app';
+import { initializeApp, getApps, getApp } from 'firebase/app';
+import { getAuth } from 'firebase/auth';
+import { GoogleAuthProvider } from 'firebase/auth';
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -11,8 +12,9 @@ const firebaseConfig = {
   measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 };
 
-// Initialize Firebase
-let firebase_app =
-  getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
+const firebaseApp =
+  getApps().length > 0 ? getApp() : initializeApp(firebaseConfig);
+const firebaseAuth = getAuth(firebaseApp);
+const googleProvider = new GoogleAuthProvider();
 
-export default firebase_app;
+export { firebaseApp, firebaseAuth, googleProvider };

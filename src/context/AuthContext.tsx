@@ -1,9 +1,9 @@
 import React, { useEffect, useState, createContext, useContext } from 'react';
 import { onAuthStateChanged, getAuth, User } from 'firebase/auth';
-import firebase_app from '@/firebase/config';
+import { firebaseApp } from '@/firebase/config';
 import { Icons } from '@/components/ui/icons';
 
-const auth = getAuth(firebase_app);
+const auth = getAuth(firebaseApp);
 
 interface AuthContextProps {
   user: User | null;
