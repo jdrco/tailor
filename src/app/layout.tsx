@@ -2,6 +2,7 @@
 import React, { ReactNode } from 'react';
 import './globals.css';
 import { AuthContextProvider } from '@/context/AuthContext';
+import { ThemeProvider } from '@/components/theme-provider';
 
 interface RootLayoutProps {
   children: ReactNode;
@@ -10,13 +11,11 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
-      {/*
-        <head /> will contain the components returned by the nearest parent
-        head.js. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
-      */}
       <head />
       <body>
-        <AuthContextProvider>{children}</AuthContextProvider>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <AuthContextProvider>{children}</AuthContextProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
