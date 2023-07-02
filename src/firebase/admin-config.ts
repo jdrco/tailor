@@ -5,10 +5,12 @@ import {
   ServiceAccount,
 } from 'firebase-admin/app';
 
-import serviceAccount from './admin-config.json';
-
 const firebaseAdminConfig = {
-  credential: cert(serviceAccount as ServiceAccount),
+  credential: cert({
+    projectId: process.env.NEXT_PUBLIC_FIREBASE_ADMIN_PROJECT_ID,
+    clientEmail: process.env.NEXT_PUBLIC_FIREBASE_ADMIN_CLIENT_EMAIl,
+    privateKey: process.env.NEXT_PUBLIC_FIREBASE_ADMIN_PRIVATE_KEY,
+  }),
 };
 
 export function customInitApp() {
