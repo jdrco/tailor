@@ -6,11 +6,12 @@ export async function middleware(request: NextRequest, response: NextResponse) {
 
   // Return to /login if don't have a session
   if (!session) {
+    console.log('You not getting in mate.');
     return NextResponse.redirect(new URL('/signin', request.url));
   }
 
   // Call the authentication endpoint
-  const responseAPI = await fetch('/api/signin', {
+  const responseAPI = await fetch(new URL('/api/signin', request.url), {
     headers: {
       Cookie: `session=${session?.value}`,
     },
@@ -23,3 +24,8 @@ export async function middleware(request: NextRequest, response: NextResponse) {
 
   return NextResponse.next();
 }
+
+//Add your protected routes
+export const config = {
+  matcher: ['/home/:path*'],
+};

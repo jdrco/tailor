@@ -1,11 +1,14 @@
-import { initializeApp, getApps, cert } from 'firebase-admin/app';
+import {
+  initializeApp,
+  getApps,
+  cert,
+  ServiceAccount,
+} from 'firebase-admin/app';
+
+import serviceAccount from './admin-config.json';
 
 const firebaseAdminConfig = {
-  credential: cert({
-    projectId: process.env.NEXT_PUBLIC_FIREBASE_ADMIN_PROJECT_ID,
-    clientEmail: process.env.NEXT_PUBLIC_FIREBASE_ADMIN_CLIENT_EMAIl,
-    privateKey: process.env.NEXT_PUBLIC_FIREBASE_ADMIN_PRIVATE_KEY,
-  }),
+  credential: cert(serviceAccount as ServiceAccount),
 };
 
 export function customInitApp() {

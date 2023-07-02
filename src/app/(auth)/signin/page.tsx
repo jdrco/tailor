@@ -45,7 +45,7 @@ function Page() {
         }
       });
     });
-  }, []);
+  }, [router]);
 
   const handleEmailSignIn = async (event: { preventDefault: () => void }) => {
     event.preventDefault();

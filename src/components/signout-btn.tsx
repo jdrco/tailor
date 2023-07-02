@@ -20,7 +20,7 @@ export function SignOutBtn() {
     try {
       await signOut(firebaseAuth);
 
-      const response = await fetch('http://localhost:3000/api/signout', {
+      const response = await fetch('/api/signout', {
         method: 'POST',
       });
 
