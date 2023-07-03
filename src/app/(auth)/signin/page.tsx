@@ -28,11 +28,26 @@ function Page() {
     event.preventDefault();
 
     try {
-      await signInWithEmailAndPassword(firebaseAuth, email, password);
-    } catch (e) {
-      console.log(e);
-    } finally {
-      return router.push('/home');
+      signInWithEmailAndPassword(firebaseAuth, email, password).then(
+        async (userCred) => {
+          if (!userCred) {
+            return;
+          }
+
+          fetch('/api/signin', {
+            method: 'POST',
+            headers: {
+              Authorization: `Bearer ${await userCred.user.getIdToken()}`,
+            },
+          }).then((response) => {
+            if (response.status === 200) {
+              router.push('/home');
+            }
+          });
+        }
+      );
+    } catch (err) {
+      console.error(err);
     }
   };
 
@@ -54,8 +69,8 @@ function Page() {
           }
         });
       });
-    } catch (e) {
-      console.log(e);
+    } catch (err) {
+      console.log(err);
     }
   };
 

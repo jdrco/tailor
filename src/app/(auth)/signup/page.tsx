@@ -28,31 +28,50 @@ function Page() {
     event.preventDefault();
 
     try {
-      await createUserWithEmailAndPassword(firebaseAuth, email, password);
-    } catch (e) {
-      console.log(e);
-    }
+      createUserWithEmailAndPassword(firebaseAuth, email, password).then(
+        async (userCred) => {
+          if (!userCred) {
+            return;
+          }
 
-    return router.push('/home');
+          fetch('/api/signin', {
+            method: 'POST',
+            headers: {
+              Authorization: `Bearer ${await userCred.user.getIdToken()}`,
+            },
+          }).then((response) => {
+            if (response.status === 200) {
+              router.push('/home');
+            }
+          });
+        }
+      );
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   const handleGoogleAuth = async () => {
-    signInWithPopup(firebaseAuth, googleProvider).then(async (userCred) => {
-      if (!userCred) {
-        return;
-      }
-
-      fetch('/api/signin', {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${await userCred.user.getIdToken()}`,
-        },
-      }).then((response) => {
-        if (response.status === 200) {
-          router.push('/home');
+    try {
+      signInWithPopup(firebaseAuth, googleProvider).then(async (userCred) => {
+        if (!userCred) {
+          return;
         }
+
+        fetch('/api/signin', {
+          method: 'POST',
+          headers: {
+            Authorization: `Bearer ${await userCred.user.getIdToken()}`,
+          },
+        }).then((response) => {
+          if (response.status === 200) {
+            router.push('/home');
+          }
+        });
       });
-    });
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
@@ -82,7 +101,7 @@ function Page() {
           />
         </div>
         <Button onClick={(e) => handleEmailSignUp(e)} className="w-full">
-          Sign In
+          Sign up
         </Button>
         <div className="relative">
           <div className="absolute inset-0 flex items-center">
