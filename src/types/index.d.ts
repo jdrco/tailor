@@ -31,9 +31,8 @@ export type HomeConfig = {
 };
 
 type Profile = {
-  userId: number;
   id: string;
   title: string;
   content: string;
-  modifiedAt: string;
+  lastUpdated: string;
 };
