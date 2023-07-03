@@ -15,11 +15,7 @@ import { Input } from '@/registry/new-york/ui/input';
 import { Label } from '@/registry/new-york/ui/label';
 
 import { firebaseAuth, googleProvider } from '@/firebase/config';
-import {
-  getRedirectResult,
-  createUserWithEmailAndPassword,
-  signInWithRedirect,
-} from 'firebase/auth';
+import { createUserWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
 
 import { useRouter } from 'next/navigation';
 
@@ -28,8 +24,20 @@ function Page() {
   const [password, setPassword] = React.useState('');
   const router = useRouter();
 
-  React.useEffect(() => {
-    getRedirectResult(firebaseAuth).then(async (userCred) => {
+  const handleEmailSignUp = async (event: { preventDefault: () => void }) => {
+    event.preventDefault();
+
+    try {
+      await createUserWithEmailAndPassword(firebaseAuth, email, password);
+    } catch (e) {
+      console.log(e);
+    }
+
+    return router.push('/home');
+  };
+
+  const handleGoogleAuth = async () => {
+    signInWithPopup(firebaseAuth, googleProvider).then(async (userCred) => {
       if (!userCred) {
         return;
       }
@@ -45,26 +53,6 @@ function Page() {
         }
       });
     });
-  }, [router]);
-
-  const handleEmailSignUp = async (event: { preventDefault: () => void }) => {
-    event.preventDefault();
-
-    try {
-      await createUserWithEmailAndPassword(firebaseAuth, email, password);
-    } catch (e) {
-      console.log(e);
-    }
-
-    return router.push('/home');
-  };
-
-  const handleGoogleAuth = async () => {
-    try {
-      signInWithRedirect(firebaseAuth, googleProvider);
-    } catch (e) {
-      console.log(e);
-    }
   };
 
   return (
