@@ -22,13 +22,17 @@ import { useRouter } from 'next/navigation';
 function Page() {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
+  const [emailLoading, setEmailLoading] = React.useState<boolean>(false);
+  const [googleLoading, setGoogleLoading] = React.useState<boolean>(false);
+
   const router = useRouter();
 
   const handleEmailSignIn = async (event: { preventDefault: () => void }) => {
     event.preventDefault();
+    setEmailLoading(true);
 
     try {
-      signInWithEmailAndPassword(firebaseAuth, email, password).then(
+      await signInWithEmailAndPassword(firebaseAuth, email, password).then(
         async (userCred) => {
           if (!userCred) {
             return;
@@ -48,29 +52,36 @@ function Page() {
       );
     } catch (err) {
       console.error(err);
+    } finally {
+      setEmailLoading(false);
     }
   };
 
   const handleGoogleAuth = async () => {
+    setGoogleLoading(true);
     try {
-      signInWithPopup(firebaseAuth, googleProvider).then(async (userCred) => {
-        if (!userCred) {
-          return;
-        }
-
-        fetch('/api/signin', {
-          method: 'POST',
-          headers: {
-            Authorization: `Bearer ${await userCred.user.getIdToken()}`,
-          },
-        }).then((response) => {
-          if (response.status === 200) {
-            router.push('/home');
+      await signInWithPopup(firebaseAuth, googleProvider).then(
+        async (userCred) => {
+          if (!userCred) {
+            return;
           }
-        });
-      });
+
+          fetch('/api/signin', {
+            method: 'POST',
+            headers: {
+              Authorization: `Bearer ${await userCred.user.getIdToken()}`,
+            },
+          }).then((response) => {
+            if (response.status === 200) {
+              router.push('/home');
+            }
+          });
+        }
+      );
     } catch (err) {
       console.log(err);
+    } finally {
+      setGoogleLoading(false);
     }
   };
 
@@ -101,6 +112,9 @@ function Page() {
           />
         </div>
         <Button onClick={(e) => handleEmailSignIn(e)} className="w-full">
+          {emailLoading ? (
+            <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+          ) : null}
           Sign In
         </Button>
         <div className="relative">
@@ -114,7 +128,11 @@ function Page() {
           </div>
         </div>
         <Button variant="outline" onClick={() => handleGoogleAuth()}>
-          <Icons.google className="mr-2 h-4 w-4" />
+          {googleLoading ? (
+            <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+          ) : (
+            <Icons.google className="mr-2 h-4 w-4" />
+          )}
           Google
         </Button>
       </CardContent>

@@ -1,7 +1,6 @@
 'use client';
 
 import * as React from 'react';
-import { useRouter } from 'next/navigation';
 
 import { cn } from '@/lib/utils';
 import { ButtonProps, buttonVariants } from '@/components/ui/button';
@@ -17,7 +16,6 @@ export function ProfileCreateButton({
   variant,
   ...props
 }: ProfileCreateButtonProps) {
-  const router = useRouter();
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
 
   const profile = {
