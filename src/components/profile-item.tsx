@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { formatDate } from '@/lib/utils';
 import { Card } from '@/registry/new-york/ui/card';
+import { Skeleton } from '@/components/ui/skeleton';
 import { Profile } from '@/types';
 
 interface ProfileItemProps {
@@ -14,9 +15,6 @@ export function ProfileItem({ profile }: ProfileItemProps) {
         <Link href="/home" className="font-semibold hover:underline">
           {profile.title}
         </Link>
-        <Link href="/home" className="font-semibold hover:underline">
-          {profile.content}
-        </Link>
         <p className="text-sm text-muted-foreground">
           Updated: {formatDate(profile.lastUpdated)}
         </p>
@@ -24,3 +22,14 @@ export function ProfileItem({ profile }: ProfileItemProps) {
     </Card>
   );
 }
+
+ProfileItem.Skeleton = function PostItemSkeleton() {
+  return (
+    <Card className="flex items-end justify-between p-4 shadow-none">
+      <div className="flex flex-col">
+        <Skeleton className="h-5 w-2/5" />
+        <Skeleton className="h-4 w-4/5" />
+      </div>
+    </Card>
+  );
+};
