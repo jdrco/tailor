@@ -23,7 +23,6 @@ function Page() {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [emailLoading, setEmailLoading] = React.useState<boolean>(false);
-  const [googleLoading, setGoogleLoading] = React.useState<boolean>(false);
 
   const router = useRouter();
 
@@ -58,7 +57,6 @@ function Page() {
   };
 
   const handleGoogleAuth = async () => {
-    setGoogleLoading(true);
     try {
       await signInWithPopup(firebaseAuth, googleProvider).then(
         async (userCred) => {
@@ -80,8 +78,6 @@ function Page() {
       );
     } catch (err) {
       console.log(err);
-    } finally {
-      setGoogleLoading(false);
     }
   };
 
@@ -128,11 +124,7 @@ function Page() {
           </div>
         </div>
         <Button variant="outline" onClick={() => handleGoogleAuth()}>
-          {googleLoading ? (
-            <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
-          ) : (
-            <Icons.google className="mr-2 h-4 w-4" />
-          )}
+          <Icons.google className="mr-2 h-4 w-4" />
           Google
         </Button>
       </CardContent>
