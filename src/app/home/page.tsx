@@ -23,7 +23,7 @@ function Page() {
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       let profilesArr: Profile[] = [];
       querySnapshot.forEach((doc) => {
-        profilesArr.push({ ...doc.data() } as Profile);
+        profilesArr.push({ ...doc.data(), id: doc.id } as Profile);
       });
       profilesArr.sort((a, b) => {
         const dateA = new Date(a.lastUpdated);

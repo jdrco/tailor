@@ -3,6 +3,7 @@ import { formatDate } from '@/lib/utils';
 import { Card } from '@/registry/new-york/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Profile } from '@/types';
+import { ProfileOptions } from './profile-options';
 
 interface ProfileItemProps {
   profile: Profile;
@@ -19,6 +20,7 @@ export function ProfileItem({ profile }: ProfileItemProps) {
           Updated: {formatDate(profile.lastUpdated)}
         </p>
       </div>
+      <ProfileOptions profile={profile} />
     </Card>
   );
 }
