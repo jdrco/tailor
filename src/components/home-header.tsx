@@ -1,4 +1,4 @@
-import { Card } from '@/registry/new-york/ui/card';
+import { Card } from '@/components/ui/new-york/ui/card';
 
 interface HomeHeaderProps {
   heading: string;

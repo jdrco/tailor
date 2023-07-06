@@ -2,7 +2,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { Icons } from '@/components/ui/icons';
-import { Button } from '@/registry/new-york/ui/button';
+import { Button } from '@/components/ui/new-york/ui/button';
 import {
   Card,
   CardContent,
@@ -10,9 +10,9 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@/registry/new-york/ui/card';
-import { Input } from '@/registry/new-york/ui/input';
-import { Label } from '@/registry/new-york/ui/label';
+} from '@/components/ui/new-york/ui/card';
+import { Input } from '@/components/ui/new-york/ui/input';
+import { Label } from '@/components/ui/new-york/ui/label';
 
 import { firebaseAuth, googleProvider } from '@/firebase/config';
 import { createUserWithEmailAndPassword, signInWithPopup } from 'firebase/auth';

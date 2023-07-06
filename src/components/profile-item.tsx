@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { formatDate } from '@/lib/utils';
-import { Card } from '@/registry/new-york/ui/card';
+import { Card } from '@/components/ui/new-york/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Profile } from '@/types';
 import { ProfileOptions } from './profile-options';
@@ -13,7 +13,10 @@ export function ProfileItem({ profile }: ProfileItemProps) {
   return (
     <Card className="flex items-end justify-between p-4 shadow-none">
       <div className="flex flex-col">
-        <Link href="/home" className="font-semibold hover:underline">
+        <Link
+          href={`/editor/${profile.id}`}
+          className="font-semibold hover:underline"
+        >
           {profile.title}
         </Link>
         <p className="text-sm text-muted-foreground">
