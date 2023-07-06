@@ -7,7 +7,7 @@ import { HomeHeader } from '@/components/home-header';
 import { ProfileCreateButton } from '@/components/profile-create-btn';
 import { ProfileItem } from '@/components/profile-item';
 import { Profile } from '@/types';
-import { collection, query, onSnapshot } from 'firebase/firestore';
+import { collection, query, where, onSnapshot } from 'firebase/firestore';
 import { db } from '@/firebase/config';
 
 function Page() {
@@ -16,10 +16,14 @@ function Page() {
   const [profiles, setProfiles] = React.useState<Profile[]>([]);
 
   React.useEffect(() => {
-    if (user == null) router.push('/signin');
-
-    // Read from db and update state
-    const q = query(collection(db, 'profiles'));
+    if (!user || !user.uid) {
+      // router.push('/signin');
+      return;
+    }
+    const q = query(
+      collection(db, 'profiles'),
+      where('userId', '==', user.uid)
+    );
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       let profilesArr: Profile[] = [];
       querySnapshot.forEach((doc) => {

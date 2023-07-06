@@ -8,6 +8,7 @@ import { Icons } from '@/components/ui/icons';
 
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from '@/firebase/config';
+import { useAuthContext } from '@/context/AuthContext';
 
 interface ProfileCreateButtonProps extends ButtonProps {}
 
@@ -17,8 +18,10 @@ export function ProfileCreateButton({
   ...props
 }: ProfileCreateButtonProps) {
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
+  const { user } = useAuthContext();
 
   const profile = {
+    userId: user?.uid,
     title: 'Untitled',
     content: '',
     lastUpdated: new Date().toISOString(),

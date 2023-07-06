@@ -13,7 +13,7 @@ export function SignOutBtn() {
   const router = useRouter();
 
   React.useEffect(() => {
-    if (user == null) router.push('/');
+    if (user == null) router.push('/signin');
   }, [router, user]);
 
   const handleSignOut = async () => {
