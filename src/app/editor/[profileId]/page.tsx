@@ -1,7 +1,7 @@
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '@/firebase/config';
 
-import Editor from '@/components/ui/editor';
+import Editor from '@/components/editor';
 
 interface EditorPageProps {
   params: { profileId: string };

@@ -1,3 +1,5 @@
+'use client';
+
 import { Button } from '@/components/ui/button';
 import {
   HoverCard,
@@ -7,6 +9,9 @@ import {
 import { Label } from '@/components/ui/label';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Textarea } from '@/components/ui/textarea';
+
+import { useEditor, EditorContent } from '@tiptap/react';
+import StarterKit from '@tiptap/starter-kit';
 // import { Card } from '@/registry/new-york/ui/card';
 
 // import { MaxLengthSelector } from './components/maxlength-selector';
@@ -20,6 +25,11 @@ import { Textarea } from '@/components/ui/textarea';
 // import { presets } from './data/presets';
 
 export default function Editor() {
+  const editor = useEditor({
+    extensions: [StarterKit],
+    content: '<p>Hello World! 🌎️</p>',
+  });
+
   return (
     <>
       <div className="md:hidden text-center">Not supported on mobile</div>
@@ -61,11 +71,10 @@ export default function Editor() {
                     <div className="grid h-full gap-6 lg:grid-cols-2">
                       <div className="flex flex-col space-y-4">
                         <div className="flex flex-1 flex-col space-y-2">
-                          <Label htmlFor="input">Target - </Label>
-                          <Textarea
-                            id="input"
-                            placeholder="Tailor your thoughts to..."
+                          <Label htmlFor="input">Target</Label>
+                          <EditorContent
                             className="flex-1 lg:min-h-[580px] bg-muted"
+                            editor={editor}
                           />
                         </div>
                       </div>
