@@ -1,7 +1,7 @@
 import { landingConfig } from '@/config/landing';
 import { MainNav } from '@/components/main-nav';
 import { SiteFooter } from '@/components/footer';
-import { SignInBtn } from '@/components/signin-btn';
+import { SignInBtn } from '@/components/signin-redirect-btn';
 
 interface LandingLayoutProps {
   children: React.ReactNode;
