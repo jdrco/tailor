@@ -4,11 +4,11 @@ import { SiteFooter } from '@/components/footer';
 import React from 'react';
 import { SignOutBtn } from '@/components/signout-btn';
 
-interface HomeLayoutProps {
+interface EditorLayoutProps {
   children?: React.ReactNode;
 }
 
-export default async function HomeLayout({ children }: HomeLayoutProps) {
+export default async function EditorLayout({ children }: EditorLayoutProps) {
   return (
     <div className="flex min-h-screen flex-col space-y-6">
       <header className="sticky top-0 z-40 border-b bg-background">

@@ -25,6 +25,7 @@ import {
   Twitter,
   User,
   X,
+  ArrowDownToLine,
   type Icon as LucideIcon,
 } from 'lucide-react';
 
@@ -83,6 +84,7 @@ export const Icons = {
   sun: SunMedium,
   moon: Moon,
   laptop: Laptop,
+  save: ArrowDownToLine,
   gitHub: (props: LucideProps) => (
     <svg viewBox="0 0 438.549 438.549" {...props}>
       <path

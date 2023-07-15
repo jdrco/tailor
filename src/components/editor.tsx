@@ -6,27 +6,28 @@ import StarterKit from '@tiptap/starter-kit';
 
 type EditorProps = {
   className?: string;
-  editorType?: 'input' | 'target';
-  onChange: (data: any) => void;
+  editorContent: any;
+  onEditorChange: (data: any) => void;
 };
 
-const Editor: React.FC<EditorProps> = ({ className, editorType, ...props }) => {
+const Editor: React.FC<EditorProps> = ({
+  className,
+  editorContent,
+  onEditorChange,
+}) => {
   const editor = useEditor({
     extensions: [StarterKit],
-    content:
-      editorType === 'input'
-        ? 'Tailor your words here ...'
-        : 'Target text to tailor to ...',
+    content: editorContent,
     editorProps: {
       attributes: {
         class: cn(
-          'prose max-w-none px-3 py-2 border text-sm rounded-md dark:prose-invert border border-input bg-transparent ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
+          'prose max-w-none overflow-y-scroll px-3 py-2 border text-sm rounded-md dark:prose-invert border border-input bg-transparent ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
           className
         ),
       },
     },
     onUpdate: ({ editor }) => {
-      props?.onChange(editor.getJSON());
+      onEditorChange(editor.getJSON());
     },
   });
 

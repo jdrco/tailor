@@ -132,7 +132,7 @@ export default function Home() {
         </div>
         <div className="mx-auto text-center md:max-w-[58rem]">
           <p className="leading-normal text-muted-foreground sm:text-lg sm:leading-7">
-            Tailored also includes a blog and a full-featured documentation site
+            Tailor also includes a blog and a full-featured documentation site
             built using Contentlayer and MDX.
           </p>
         </div>
@@ -143,7 +143,7 @@ export default function Home() {
             Pricing
           </h2>
           <p className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
-            Tailored is a completely <span className="font-bold">free</span>{' '}
+            Tailor is a completely <span className="font-bold">free</span>{' '}
             software application. Enjoy! <br />{' '}
             <Link
               href="/#pricing"
