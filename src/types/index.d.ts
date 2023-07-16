@@ -32,7 +32,7 @@ export type HomeConfig = {
 
 type Profile = {
   userId?: string;
-  id?: string;
+  id: string;
   title: string;
   targetContent: any;
   inputContent: any;

@@ -21,7 +21,7 @@ export function ProfileCreateButton({
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
   const { user } = useAuthContext();
 
-  const profile: Profile = {
+  const profile = {
     userId: user?.uid,
     title: 'Untitled',
     targetContent: null,
