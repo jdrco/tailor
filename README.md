@@ -11,7 +11,7 @@ Tailor is a web application that allows you to craft customized profiles. Each p
 The AI-powered functionality assists in tailoring sentences to align with the target text, such as incorporating an individual's job experiences when applying for a position.
 
 > **Warning**
-> This features is a work in progress.
+> This feature is a work in progress.
 > See the "Todos" below.
 
 Though the example I've just explained is specific to job applications, the tool can be used for any type of text tailoring.
