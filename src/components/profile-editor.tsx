@@ -60,24 +60,24 @@ export default function ProfileEditor({ profile }: ProfileEditorProps) {
         </div>
         <div className="grid h-full gap-4 grid-cols-1 lg:grid-cols-2">
           <div className="flex flex-col">
-            <div className="flex flex-1 flex-col space-y-2">
-              <Label htmlFor="input">Target</Label>
-              <Editor
-                className="flex-1 bg-muted resize-y mb-4"
-                editorContent={targetContent}
-                onEditorChange={handleTargetChange}
-              />
-            </div>
+            <Label htmlFor="input" className="mb-2">
+              Target
+            </Label>
+            <Editor
+              className="bg-muted resize-y mb-4"
+              editorContent={targetContent}
+              onEditorChange={handleTargetChange}
+            />
           </div>
           <div className="flex flex-col">
-            <div className="flex flex-1 flex-col space-y-2">
-              <Label htmlFor="input">Input</Label>
-              <Editor
-                className="flex-1 resize-y mb-4"
-                editorContent={inputContent}
-                onEditorChange={handleInputChange}
-              />
-            </div>
+            <Label htmlFor="input" className="mb-2">
+              Input
+            </Label>
+            <Editor
+              className="resize-y mb-4"
+              editorContent={inputContent}
+              onEditorChange={handleInputChange}
+            />
           </div>
         </div>
       </div>
