@@ -2,10 +2,6 @@
 
 An application built to help you tailor your thoughts to a target description.
 
-> **Warning**
-> This app is a work in progress.
-> See the "Todos" below.
-
 ## About this project
 
 I found that I was spending a lot of time trying to tailor my resume to specific job descriptions. I wanted to build a tool that would help me do this more efficiently. This is the result.
@@ -14,7 +10,8 @@ Tailor is a web application that allows you to craft customized profiles. Each p
 
 The AI-powered functionality assists in tailoring sentences to align with the target text, such as incorporating an individual's job experiences when applying for a position.
 
-> **Not completed yet**
+> **Warning**
+> This features is a work in progress.
 > See the "Todos" below.
 
 Though the example I've just explained is specific to job applications, the tool can be used for any type of text tailoring.
