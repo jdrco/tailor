@@ -22,10 +22,10 @@ export default function AuthLayout({ children }: AuthLayoutProps) {
         </div>
         <div>
           <div className="text-xl pb-3">
-            &quot;Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-            Minima repudiandae explicabo consequatur harum.&quot;
+            &quot;Don&apos;t tell me the moon is shining; show me the glint of
+            light on broken glass.&quot;
           </div>
-          <div>- Some testimonial</div>
+          <div>- Anton Chekhov</div>
         </div>
       </div>
       <div className="w-full lg:w-1/2 flex flex-col justify-center items-center">

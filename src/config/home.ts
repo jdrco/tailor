@@ -7,8 +7,8 @@ export const homeConfig: HomeConfig = {
       href: '/home/#',
     },
     {
-      title: 'Billing',
-      href: '/home/#',
+      title: 'About',
+      href: 'https://github.com/jdrco/tailor#readme',
     },
   ],
 };

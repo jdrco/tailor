@@ -9,18 +9,23 @@ export default function Home() {
       <section className="container space-y-6 pb-8 pt-6 md:pb-12 md:pt-10 lg:py-32">
         <div className="flex flex-col items-center gap-4 text-center">
           <Link
-            href="/"
+            href="https://github.com/jdrco"
             className="rounded-2xl bg-muted px-4 py-1.5 text-sm font-medium"
             target="_blank"
           >
-            IDK what text to put here
+            Follow along on GitHub
           </Link>
           <h1 className="font-heading font-bold text-3xl sm:text-5xl md:text-6xl lg:text-7xl">
-            An app tailored for you
+            Text tailoring to craft
+            <br />
+            custom profiles with ease
           </h1>
           <p className="max-w-[42rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8">
-            Scoop-diddy-whoop Whoop-di-scoop-di-poop Poop-di-scoopty
-            Scoopty-whoop Whoopity-scoop, whoop-poop Poop-diddy, whoop-scoop
+            {/* Harness modern computing to effortlessly adapt your written
+            <br />
+            ideas to match specific descriptions */}
+            Unlock the brilliance of your experiences, insights, and ideas.
+            Effortlessly adapt text to match specific descriptions.
           </p>
           <div className="space-x-4">
             <Link href="/signup" className={cn(buttonVariants({ size: 'lg' }))}>
@@ -38,8 +43,8 @@ export default function Home() {
             Features
           </h2>
           <p className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
-            This project uses modern web features like auth, subscriptions, API
-            routes, and static pages using Next.js app dir.
+            This project uses modern web features like auth, API routes, rich
+            text editors, and static pages.
           </p>
         </div>
         <div className="mx-auto grid justify-center gap-4 sm:grid-cols-2 md:max-w-[64rem] md:grid-cols-3">
@@ -58,7 +63,7 @@ export default function Home() {
               <div className="space-y-2">
                 <h3 className="font-bold">React 18</h3>
                 <p className="text-sm">
-                  Server and Client Components. Use hook.
+                  Server and Client Components. Dynamic page routing.
                 </p>
               </div>
             </div>
@@ -68,8 +73,7 @@ export default function Home() {
               <div className="space-y-2">
                 <h3 className="font-bold">Database</h3>
                 <p className="text-sm text-muted-foreground">
-                  ORM using Prisma and deployed on PlanetScale. Using Firestore
-                  database for secure user data.
+                  Firestore database for storing secure user data.
                 </p>
               </div>
             </div>
@@ -79,8 +83,8 @@ export default function Home() {
               <div className="space-y-2">
                 <h3 className="font-bold">Components</h3>
                 <p className="text-sm text-muted-foreground">
-                  UI components built using Radix UI and styled with Tailwind
-                  CSS.
+                  UI components built using shadcn/ui (RadixUI) and styled with
+                  Tailwind CSS.
                 </p>
               </div>
             </div>
@@ -98,9 +102,10 @@ export default function Home() {
           <div className="relative overflow-hidden rounded-lg border bg-background p-2">
             <div className="flex h-[180px] flex-col justify-between rounded-md p-6">
               <div className="space-y-2">
-                <h3 className="font-bold">Subscriptions</h3>
+                <h3 className="font-bold">Rich Text Editor</h3>
                 <p className="text-sm text-muted-foreground">
-                  Free and paid subscriptions using Stripe.
+                  Integrates the Tiptap rich text editor which renders Markdown
+                  in real time.
                 </p>
               </div>
             </div>
