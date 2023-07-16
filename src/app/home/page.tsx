@@ -17,7 +17,6 @@ function Page() {
 
   React.useEffect(() => {
     if (!user || !user.uid) {
-      // router.push('/signin');
       return;
     }
     const q = query(

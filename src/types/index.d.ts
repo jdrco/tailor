@@ -31,9 +31,10 @@ export type HomeConfig = {
 };
 
 type Profile = {
-  userId: string;
-  id: string;
+  userId?: string;
+  id?: string;
   title: string;
-  content: string;
+  targetContent: any;
+  inputContent: any;
   lastUpdated: string;
 };

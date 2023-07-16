@@ -2,13 +2,14 @@
 
 import * as React from 'react';
 
-import { cn } from '@/lib/utils';
-import { ButtonProps, buttonVariants } from '@/components/ui/button';
+import { cn, formatDate } from '@/lib/utils';
+import { Button, ButtonProps, buttonVariants } from '@/components/ui/button';
 import { Icons } from '@/components/ui/icons';
 
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from '@/firebase/config';
 import { useAuthContext } from '@/context/AuthContext';
+import { Profile } from '@/types';
 
 interface ProfileCreateButtonProps extends ButtonProps {}
 
@@ -20,11 +21,12 @@ export function ProfileCreateButton({
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
   const { user } = useAuthContext();
 
-  const profile = {
+  const profile: Profile = {
     userId: user?.uid,
     title: 'Untitled',
-    content: '',
-    lastUpdated: new Date().toISOString(),
+    targetContent: null,
+    inputContent: null,
+    lastUpdated: formatDate(new Date().toISOString()),
   };
 
   async function onClick() {
@@ -40,14 +42,14 @@ export function ProfileCreateButton({
   }
 
   return (
-    <button
+    <Button
       onClick={onClick}
       className={cn(
-        buttonVariants({ variant }),
+        buttonVariants({ variant: 'ghost', size: 'sm' }),
         {
           'cursor-not-allowed opacity-60': isLoading,
         },
-        className
+        'w-24'
       )}
       disabled={isLoading}
       {...props}
@@ -58,6 +60,6 @@ export function ProfileCreateButton({
         <Icons.add className="mr-2 h-4 w-4" />
       )}
       New
-    </button>
+    </Button>
   );
 }

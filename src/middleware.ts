@@ -27,6 +27,5 @@ export async function middleware(request: NextRequest, response: NextResponse) {
 
 //Add your protected routes
 export const config = {
-  // matcher: ['/home/:path*', '/editor/:path*'],
-  matcher: ['/home/:path*'],
+  matcher: ['/home/:path*', '/editor/:path*'],
 };

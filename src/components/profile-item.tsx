@@ -20,7 +20,7 @@ export function ProfileItem({ profile }: ProfileItemProps) {
           {profile.title}
         </Link>
         <p className="text-sm text-muted-foreground">
-          Updated: {formatDate(profile.lastUpdated)}
+          Updated: {profile.lastUpdated}
         </p>
       </div>
       <ProfileOptions profile={profile} />

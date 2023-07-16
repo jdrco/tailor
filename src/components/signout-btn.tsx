@@ -37,7 +37,7 @@ export function SignOutBtn() {
       onClick={handleSignOut}
       className={cn(
         buttonVariants({ variant: 'secondary', size: 'sm' }),
-        'px-4'
+        'px-4 max-w-24'
       )}
     >
       Sign out
