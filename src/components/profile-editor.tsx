@@ -6,6 +6,7 @@ import SaveBtn from './save-btn';
 import { Label } from '@radix-ui/react-label';
 import Editor from './ui/tiptap-editor';
 import { formatDate } from '@/lib/utils';
+import { profileConfig } from '@/config/profile';
 
 interface ProfileEditorProps {
   profile: Profile;
@@ -16,12 +17,12 @@ export default function ProfileEditor({ profile }: ProfileEditorProps) {
   const [targetContent, setTargetContent] = React.useState(
     profileContent?.targetContent
       ? profileContent.targetContent
-      : 'Text to tailor to ...'
+      : profileConfig.targetContent
   );
   const [inputContent, setInputContent] = React.useState(
     profileContent?.inputContent
       ? profileContent.inputContent
-      : 'Tailor your text here ...'
+      : profileConfig.inputContent
   );
 
   const handleTargetChange = (data: any) => {

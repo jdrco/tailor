@@ -19,6 +19,7 @@ export default function SaveBtn({
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
 
   const handleProfileSave = async (data: any, updateProfileContent: any) => {
+    console.log(data);
     setIsLoading(true);
     const docRef = doc(db, 'profiles', data.id);
     const lastUpdated = new Date().toISOString();

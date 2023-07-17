@@ -22,6 +22,11 @@ export type SiteConfig = {
   };
 };
 
+export type ProfileConfig = {
+  targetContent: any;
+  inputContent: any;
+};
+
 export type LandingConfig = {
   mainNav: MainNavItem[];
 };
@@ -30,7 +35,7 @@ export type HomeConfig = {
   mainNav: MainNavItem[];
 };
 
-type Profile = {
+export type Profile = {
   userId?: string;
   id: string;
   title: string;
