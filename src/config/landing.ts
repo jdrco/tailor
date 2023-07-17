@@ -11,7 +11,7 @@ export const landingConfig: LandingConfig = {
       href: '/#pricing',
     },
     {
-      title: 'About',
+      title: 'Documentation',
       href: 'https://github.com/jdrco/tailor#readme',
     },
   ],

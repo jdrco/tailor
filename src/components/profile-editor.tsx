@@ -5,7 +5,6 @@ import { Input } from './ui/new-york/ui/input';
 import SaveBtn from './save-btn';
 import { Label } from '@radix-ui/react-label';
 import Editor from './ui/tiptap-editor';
-import { formatDate } from '@/lib/utils';
 import { profileConfig } from '@/config/profile';
 
 interface ProfileEditorProps {
