@@ -21,10 +21,8 @@ export default function Home() {
             custom profiles with ease
           </h1>
           <p className="max-w-[42rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8">
-            {/* Harness modern computing to effortlessly adapt your written
-            <br />
-            ideas to match specific descriptions */}
             Unlock the brilliance of your experiences, insights, and ideas.
+            <br />
             Effortlessly adapt text to match specific descriptions.
           </p>
           <div className="space-x-4">

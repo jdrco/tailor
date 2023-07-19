@@ -19,9 +19,7 @@ export default async function EditorLayout({ children }: EditorLayoutProps) {
           </nav>
         </div>
       </header>
-      <main className="flex container w-full flex-1 flex-col overflow-scroll">
-        {children}
-      </main>
+      <main className="flex container w-full flex-1 flex-col">{children}</main>
       <SiteFooter className="border-t" />
     </div>
   );
