@@ -6,6 +6,7 @@ import SaveBtn from './save-btn';
 import { Label } from '@radix-ui/react-label';
 import Editor from './ui/tiptap-editor';
 import { profileConfig } from '@/config/profile';
+import Link from 'next/link';
 
 interface ProfileEditorProps {
   profile: Profile;
@@ -40,7 +41,7 @@ export default function ProfileEditor({ profile }: ProfileEditorProps) {
   return (
     <>
       <div className="flex flex-col space-y-4">
-        <div className="flex flex-col sm:flex-row justify-between items-start">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end">
           <div className="w-full flex flex-col gap-1 mb-4 sm:mb-0">
             <Input
               className="text-4xl shadow-none border-none focus-visible:ring-0 h-auto p-0 m-0"
@@ -53,10 +54,18 @@ export default function ProfileEditor({ profile }: ProfileEditorProps) {
               Last Saved: {profileContent.lastUpdated}
             </div>
           </div>
-          <SaveBtn
-            profileContent={profileContent}
-            updateProfileContent={updatedProfileContent}
-          />
+          <div className="flex flex-col gap-1 mb-4 sm:mb-0">
+            <Link
+              href="/home"
+              className="underline mb-2 sm:text-right text-sm text-muted-foreground"
+            >
+              Profiles
+            </Link>
+            <SaveBtn
+              profileContent={profileContent}
+              updateProfileContent={updatedProfileContent}
+            />
+          </div>
         </div>
         <div className="grid h-full gap-4 grid-cols-1 lg:grid-cols-2">
           <div className="flex flex-col">
