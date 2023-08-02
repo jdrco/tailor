@@ -20,6 +20,7 @@ Though the example I've just explained is specific to job applications, the tool
 
 - [ ] Integrate OpenAI for ML text completion
 - [ ] Subscriptions using Stripe
+- [ ] Clean up types
 - [x] ~Implement CRUD functionality~
 - [x] ~Integrate a rich text editor (Tiptap)~
 - [x] ~Implement authentication~
